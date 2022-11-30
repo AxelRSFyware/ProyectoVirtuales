@@ -151,20 +151,33 @@ function enviar(){
 	  	prefe[i] = pr;
 	  	tiemp[i] = td;
   	}
-  	var subjects = new Object(); // <--- aquí con "s"
+	  let subjects = [];
+  	var subject = new Object(materia,calif,grado,prefe,tiemp); // <--- aquí con "s"
 	var columnas = ['name','grade','dificulty','preference','timeDedicated'];
 	for (i = 0; i < inputs.length/5; i++) {
-		subjects[i] = new Object();
-		subjects[i].name = materia[i];
- 		subjects[i].grade = calif[i];
-		subjects[i].dificulty = grado[i];
-  		subjects[i].preference = prefe[i];
-  		subjects[i].timeDedicated = tiemp[i];
-	}
+			subject.push(materia[i],calif[i],grado[i],prefe[i],tiemp[i]);
 
-	const objeto = Object.assign(Student,subjects)
-	var data = JSON.stringify(objeto);
-	console.log(data);
+	}
+	
+	
+	
+
+	let newJson = {
+	subjects:[...subjects],
+	student:{
+		name: nombre,
+		lastName: apellidoP,
+		secondLastName: apellidoM,
+		schoolId: matriculaN,
+		major: carrera,
+		currentSemester: semestreN,
+		season: cicloEs
+
+	}
+	}
+	const objeto = Object.assign(newJson)
+	var data = JSON.stringify(newJson);
+	console.log(newJson);
 	
 	
 
@@ -172,7 +185,7 @@ function enviar(){
 	var theUrl = "localhost:5001/api/academic";
 	xmlhttp.open("POST", theUrl);
 	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-	xmlhttp.send(JSON.stringify(objeto));
+	xmlhttp.send(JSON.stringify(newJson));
 
 	alert("Fin proceso");
 }
