@@ -1,0 +1,17 @@
+.container
+  %h1 Button loading bar
+  %h2 Inspired by <a href="http://codepen.io/Jackthomsonn/" target="_blank">@jackthomsonn</a> and his <a href="http://codepen.io/Jackthomsonn/pen/wModMm" target="_blank">funky loader</a>
+  %input#funky{:type => 'checkbox'}
+  %label{:for => 'funky'}
+    .container_button
+      %span <i class="icon ion-code-download"></i> <span>Download</span>
+      <span class="downloading">Downloading</span>
+      <i class="icon d_icon ion-cube"></i>
+      <i class="icon complete ion-checkmark-round"></i>
+      -(1..36).each do
+        .point
+      .container_button__bar
+  %a.download{:href => 'http://codepen.io/jcoulterdesign/pens/popular/',:target => '_blank'} 
+    <i class="icon ion-eye"></i> <span>View my other pens</span>
+  %a.follow{:href => 'http://codepen.io/jcoulterdesign/',:target => '_blank'} 
+    <i class="icon ion-social-codepen-outline"></i> <span>Follow me on codepen</span>
